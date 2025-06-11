@@ -1,3 +1,7 @@
+//
+// Created by meet on 11/06/25.
+//
+
 #pragma once
 #include "hitpointtype.h"
 
@@ -26,7 +30,7 @@ class hp {
 		}
 
 		void takeDamage(hptype damage){
-			if (damage > CurrentHP + ShieldHP){
+			if (damage > CurrentHP){
 				CurrentHP = 0;
 				return;
 			}
@@ -42,6 +46,14 @@ class hp {
 				CurrentHP += amount;
 		}
 
+		hp() { CurrentHP = 1; MaxHP = 1;}
+		hp(hptype cHP, hptype mHP) {
+			CurrentHP = cHP;
+			MaxHP = mHP;
+			if (CurrentHP > MaxHP) {
+				CurrentHP = MaxHP;
+			}
+		}
 
 
 	private:
